@@ -1,0 +1,22 @@
+/* Base Application Styles */
+html,body {
+  background-color: #222;
+  width: 100%;
+  height: 100%
+}
+ .content {
+  width:100%;
+  height: 100%
+ }
+ /*stage start*/
+ .stage {
+    position: relative;
+    height: 680px
+ }
+ /*stage end*/
+ /*image star*/
+ .img-sec {
+    position: relative;
+    width: 100% 
+ }
+ /*image end*/
