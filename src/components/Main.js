@@ -28,11 +28,12 @@ class ImgFigure extends React.Component {
     // this.props.inverse();
     e.stopPropagation();
     e.preventDefault();
-    console.log(this.props.arrange.isCenter)
+    // console.log(this.props.arrange.isCenter)
     if(this.props.arrange.isCenter) {
       this.props.inverse()
     } else {
       this.props.center()
+
     }
     
      
@@ -75,6 +76,42 @@ class ImgFigure extends React.Component {
     )
   }
 }
+
+// 控制组件
+class ControllerUnit extends React.Component {
+   constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick (e) {
+    e.stopPropagation()
+    e.preventDefault()
+    if (this.props.arrange.isCenter) {
+      this.props.inverse();
+    } else {
+      this.props.center();
+    }
+    
+  }
+  render () {
+    var controllerUnitClassName = "controller-unit"
+
+    // 居中的图片
+    if(this.props.arrange.isCenter) {
+      controllerUnitClassName += " is-center"
+      if(this.props.arrange.isInverse) {
+        controllerUnitClassName += " is-inverse"
+      }
+    }
+    return (
+      <span className={controllerUnitClassName} onClick={this.handleClick}></span>
+    )
+  }
+
+}
+
+
+
 // 获取区间内的随机值
 function getRangeRandom (low,heigt) {
   return Math.ceil(Math.random() * (heigt - low) + low)
@@ -288,7 +325,11 @@ class AppComponent extends React.Component {
           }
         }
 
+         controllerUnits.push(<ControllerUnit key={index} arrange={this.state.imgsArrangeArr[index]} center={this.center(index)} inverse={this.inverse(index)} />)
+
+
       }.bind(this));
+
 
       
     return (

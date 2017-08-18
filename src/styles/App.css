@@ -1,4 +1,8 @@
 /* Base Application Styles */
+@font-face {
+  font-family: "icons-turn-arrow";
+  src: url("../fonts/icons/turn-arrow.eot") format("embedded-opentype"), url("../fonts/icons/turn-arrow.woff") format("woff"), url("../fonts/icons/turn-arrow.ttf") format("truetype"), url("../fonts/icons/turn-arrow.svg") format("svg");
+}
 html,body {
   background-color: #222;
   width: 100%;
@@ -89,5 +93,39 @@ html,body {
  	width: 100%;
  	text-align: center;
  }
+ .controller-unit {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+  text-align: center;
+  cursor:pointer;
+  background-color: #aaa;
+  border-radius: 50%;
+  transform: scale(0.5);
+  vertical-align: middle;
+ }
+ .controller-unit.is-center {
+  transform: scale(1);
+  background-color: #888;
+  transition: transform .6s ease-in-out,background-color .3s;
+ }
+ /*伪类1个“：” 伪元素两个“：：”*/
+
+  .controller-unit.is-center::after {
+    color: #fff;
+    font-family: "icons-turn-arrow";
+    font-size: 80%;
+    line-height: 30px;
+    content: "\e600";
+    /*字体渲染的方式 */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .controller-unit.is-center.is-inverse{
+    background-color: #555;
+    transform: rotateY(180deg);
+  }
+
 
  /*controller end*/
